@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/19 00:37:54 by oearlene          #+#    #+#             */
+/*   Updated: 2019/09/23 00:59:42 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	t_piece	*piecelist;
+	size_t len;
+	size_t i;
 
-	if (argc != 2)
+	len = ft_strlen(s1);
+	i = 0;
+	while (s2[i] != '\0' && i < n)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		s1[len + i] = s2[i];
+		i++;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	s1[len + i] = '\0';
+	return (s1);
 }

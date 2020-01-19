@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/20 05:14:20 by oearlene          #+#    #+#             */
+/*   Updated: 2019/10/06 22:35:34 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strnew(size_t size)
 {
-	t_piece	*piecelist;
+	char	*str;
+	char	*p;
 
-	if (argc != 2)
+	if (size + 1 == 0)
+		return (NULL);
+	if (!(str = (char *)malloc(size + 1)))
+		return (NULL);
+	p = str;
+	while (size)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		*p++ = '\0';
+		size--;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	*p = '\0';
+	return (str);
 }

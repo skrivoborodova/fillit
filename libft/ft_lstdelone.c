@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/10/04 04:30:57 by oearlene          #+#    #+#             */
+/*   Updated: 2019/10/04 05:17:13 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	t_piece	*piecelist;
+	t_list	*lst;
 
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
-	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	if (alst == NULL || del == NULL)
+		return ;
+	lst = *alst;
+	del(lst->content, lst->content_size);
+	free(lst);
+	*alst = NULL;
 }

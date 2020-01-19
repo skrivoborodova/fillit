@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/20 23:32:06 by oearlene          #+#    #+#             */
+/*   Updated: 2019/09/20 23:58:09 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	t_piece	*piecelist;
-
-	if (argc != 2)
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if (ft_strcmp(s1, s2) == 0)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
-	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
+		while (*s1 && *s2)
+		{
+			if (*s1 != *s2)
+				return (0);
+			s1++;
+			s2++;
+		}
 		return (1);
 	}
 	return (0);

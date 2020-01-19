@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/17 00:55:00 by oearlene          #+#    #+#             */
+/*   Updated: 2019/09/18 02:46:34 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	t_piece	*piecelist;
+	long int i;
 
-	if (argc != 2)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		dst[i] = src[i];
+		i++;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	dst[i] = '\0';
+	return (dst);
 }

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/21 00:06:10 by oearlene          #+#    #+#             */
+/*   Updated: 2019/09/23 03:56:00 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	t_piece	*piecelist;
+	size_t i;
 
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fillit target_file\n");
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if (!n)
 		return (1);
-	}
-	if ((piecelist = parser(argv[1])) == NULL)
+	i = 0;
+	while (n > 0)
 	{
-		ft_putstr("error\n");
-		return (1);
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+		n--;
 	}
-	return (0);
+	return (1);
 }

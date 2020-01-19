@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/10/04 05:18:44 by oearlene          #+#    #+#             */
+/*   Updated: 2019/10/04 05:21:10 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_piece	*piecelist;
+	t_list *l;
+	t_list *new;
 
-	if (argc != 2)
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	l = f(lst);
+	new = l;
+	while (lst->next)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		lst = lst->next;
+		if (!(l->next = f(lst)))
+		{
+			free(l->next);
+			return (NULL);
+		}
+		l = l->next;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	return (new);
 }

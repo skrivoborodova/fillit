@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/09/16 23:20:49 by oearlene          #+#    #+#             */
+/*   Updated: 2019/09/18 01:10:05 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	*ft_memchr(const void *arr, int c, size_t n)
 {
-	t_piece	*piecelist;
+	unsigned char	*s;
+	unsigned char	c1;
+	int				i;
 
-	if (argc != 2)
+	s = (unsigned char *)arr;
+	c1 = (unsigned char)c;
+	i = 0;
+	while (n--)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		if (s[i] == c1)
+			return (s + i);
+		i++;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	return (NULL);
 }

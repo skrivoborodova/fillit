@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Created: 2019/10/04 04:23:35 by oearlene          #+#    #+#             */
+/*   Updated: 2019/10/04 05:12:17 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_piece	*piecelist;
+	t_list	*lst;
+	t_list	*nxt;
 
-	if (argc != 2)
+	if (alst == NULL || del == NULL)
+		return ;
+	lst = *alst;
+	while (lst)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
-		return (1);
+		nxt = lst->next;
+		del(lst->content, lst->content_size);
+		free(lst);
+		lst = nxt;
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
-	{
-		ft_putstr("error\n");
-		return (1);
-	}
-	return (0);
+	*alst = NULL;
 }

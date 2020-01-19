@@ -1,6 +1,4 @@
-/libft/
 /cmake-build-debug/
 /.idea/
-/test
-/validation.c
-/CMakeLists.txt
+/test/
+libft/.idea
