@@ -70,4 +70,4 @@ add_executable(fillit
         get_next_line.h
         fillit.h
         validation.c
-        main.c)
+        main.c read_and_stock.c)

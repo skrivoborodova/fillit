@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/19 23:23:13 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:44:46 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int		main(int argc, char **argv)
 {
-	t_piece	*piecelist;
+	t_piece	*piece;
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fillit target_file\n");
+		ft_putstr(USAGE);
 		return (1);
 	}
-	if ((piecelist = parser(argv[1])) == NULL)
+	if ((piece = read_and_stock(argv[1])) == NULL)
 	{
-		ft_putstr("error\n");
+		ft_putstr(ERR);
 		return (1);
 	}
 	return (0);
