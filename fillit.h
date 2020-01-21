@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:31:19 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/22 00:13:01 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/22 00:32:43 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ t_map				*solve(t_piece *list);
 
 void				free_map(t_map *map);
 void				print_map(t_map *map);
+void				free_list(t_piece *list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 20:27:34 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/21 21:37:03 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:48:45 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,16 @@ t_piece		*read_and_stock(char *file)
 	if (valid(buf, byte_read) == 1)
 		return (NULL);
 	return (new_list(buf, byte_read));
+}
+
+void		free_list(t_piece *list)
+{
+	t_piece *tmp;
+
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
 }
