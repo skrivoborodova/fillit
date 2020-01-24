@@ -3,20 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oearlene <oearlene@student.42.fr>          +#+  +:+       +#+         #
+#    By: oearlene <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/08 13:16:50 by oearlene          #+#    #+#              #
-#    Updated: 2019/12/08 13:41:38 by oearlene         ###   ########.fr        #
+#    Updated: 2020/01/25 00:12:48 by oearlene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = $(wildcard *.c)
+INC_DIR	= ./includes
+LIB_DIR	= ./libft
+
+SRC =   main.c \
+        read_and_stock.c \
+        map.c \
+        validation.c \
+        solution.c \
+        solution_1.c \
+        $(LIB_DIR)/*.c
 
 OBJ = $(SRC:.c=.o)
 
-HED = $(wildcard *.h)
+HED = $(INC_DIR)/fillit.h
+
+LIBHDR = $(LIB_DIR)/libft.h
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -25,18 +36,15 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -c -MD $< -o $@
+	gcc $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) -o $(NAME) $(OBJ)
-
-include $(wildcard *.d)
+	gcc $(FLAGS) -o $(NAME) $(OBJ) -I $(HDR) -I $(LIBHDR)
 
 clean:
-	/bin/rm -rf $(OBJ)
-	/bin/rm -rf $(wildcard *.d)
+	/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -rf $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

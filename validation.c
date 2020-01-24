@@ -19,7 +19,7 @@
 **	Counts and returns number of '#' characters
 */
 
-int		charcount(char *buf)
+int		char_counter(char *buf)
 {
 	int i;
 	int count;
@@ -85,7 +85,7 @@ int		valid(char *buf, int size)
 	i = 0;
 	while (i <= size)
 	{
-		if (charcount(buf + i) != 4)
+		if (char_counter(buf + i) != 4)
 			return (1);
 		if (contacts_counter(buf + i) != 6 && contacts_counter(buf + i) != 8)
 			return (1);

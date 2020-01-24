@@ -6,25 +6,11 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:05:13 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/22 00:10:52 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/24 23:25:12 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-size_t	count_pieces(t_piece *list)
-{
-	size_t	count;
-
-	count = 0;
-	while (list)
-	{
-		list = list->next;
-		count++;
-	}
-	return (count);
-}
-
 
 int		high_sqrt(int nbr)
 {
@@ -36,11 +22,7 @@ int		high_sqrt(int nbr)
 	return (size);
 }
 
-/*
-** Backtracking implementation of the solver.
-*/
-
-int		solve_map(t_map *map, t_piece *piece)
+int		backtracking(t_map *map, t_piece *piece)
 {
 	int			x;
 	int			y;
@@ -50,18 +32,18 @@ int		solve_map(t_map *map, t_piece *piece)
 		return (1);
 	ptr = piece;
 	y = 0;
-	while (y < (map->size - ptr->y + 1))
+	while (!check_bound_y(ptr, map, y))
 	{
 		x = 0;
-		while (x < (map->size - ptr->x + 1))
+		while (!check_bound_x(ptr, map, x))
 		{
-			if () //функция которая проверяет за пределами ли карты мы
+			if (!outside_map(map, ptr, x, y))
 			{
-				//функция которая размещает фигуру на карте
-				if (solve_map(map, piece->next))
+				put_piece(ptr, map, x, y);
+				if (backtracking(map, piece->next))
 					return (1);
 				else
-					//функция которая удаляет фигуру с карты
+					del_piece(ptr, map, x, y);
 			}
 			x++;
 		}
@@ -81,7 +63,7 @@ t_map	*solve(t_piece *list)
 
 	map_size = high_sqrt(count_pieces(list) * 4);
 	map = new_map(map_size);
-	while (!solve_map(map, list))
+	while (!backtracking(map, list))
 	{
 		free_map(map);
 		map_size++;
