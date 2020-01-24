@@ -6,15 +6,15 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 20:27:34 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 01:09:54 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 02:53:09 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t	count_pieces(t_piece *list)
+size_t			count_pieces(t_piece *list)
 {
-	size_t	count;
+	size_t		count;
 
 	count = 0;
 	while (list)
@@ -30,15 +30,15 @@ size_t	count_pieces(t_piece *list)
 ** Find & store coordinates of '#' characters
 **
 **	####\n....\n....\n....\n\n
-**	x = i / 5
-**	y = 1 % 5
+**	x = i % 5
+**	y = 1 / 5
 */
 
-t_piece		*stock_piece(char *buf, char piece_letter)
+t_piece			*stock_piece(char *buf, char piece_letter)
 {
-	t_piece	*ptr;
-	int		i;
-	int		j;
+	t_piece		*ptr;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -64,12 +64,12 @@ t_piece		*stock_piece(char *buf, char piece_letter)
 ** Returns a linked list of piece structs
 */
 
-t_piece		*new_list(char *buf, int size)
+t_piece			*new_list(char *buf, int size)
 {
-	t_piece *head;
-	t_piece *tmp;
-	int		i;
-	char	piece_letter;
+	t_piece		*head;
+	t_piece		*tmp;
+	int			i;
+	char		piece_letter;
 
 	i = 0;
 	piece_letter = 'A';
@@ -98,11 +98,11 @@ t_piece		*new_list(char *buf, int size)
 ** Returns list of piece structs
 */
 
-t_piece		*read_and_stock(char *file)
+t_piece			*read_and_stock(char *file)
 {
-	char	buf[FILE_SIZE_MAX + 1];
-	int		fd;
-	int		byte_read;
+	char		buf[FILE_SIZE_MAX + 1];
+	int			fd;
+	int			byte_read;
 
 	fd = open(file, O_RDONLY);
 	byte_read = read(fd, buf, (FILE_SIZE_MAX + 1));
@@ -115,9 +115,9 @@ t_piece		*read_and_stock(char *file)
 	return (new_list(buf, byte_read));
 }
 
-void		free_list(t_piece *list)
+void			free_list(t_piece *list)
 {
-	t_piece *tmp;
+	t_piece		*tmp;
 
 	while (list)
 	{
