@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:31:19 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 00:01:27 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 01:18:14 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include <stdio.h>
 
-# define FILE_SIZE_MAX 544
+# define FILE_SIZE_MAX 545
 # define FILE_SIZE_MIN 19
 
 # define USAGE "usage: ./fillit target_file\n"

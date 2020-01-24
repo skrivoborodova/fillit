@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 20:27:34 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/24 23:38:09 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 01:09:54 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_piece		*stock_piece(char *buf, char piece_letter)
 	{
 		if (buf[i] == '#')
 		{
-			ptr->x[j] = i / 5;
-			ptr->y[j] = i % 5;
+			ptr->x[j] = i % 5;
+			ptr->y[j] = i / 5;
 			j++;
 		}
 		i++;

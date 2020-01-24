@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:15:43 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/24 23:10:11 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 02:04:01 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		outside_map(t_map *map, t_piece *piece, int x, int y)
 	i = 0;
 	x1 = 0;
 	y1 = 0;
-	while (i <= 4 && map->array[y1][x1] == '.')
+	while (i <= 3 && map->array[y1][x1] == '.')
 	{
 		x1 = piece->x[i] + x;
 		y1 = piece->y[i] + y;

@@ -6,28 +6,31 @@
 #    By: oearlene <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/08 13:16:50 by oearlene          #+#    #+#              #
-#    Updated: 2020/01/25 00:12:48 by oearlene         ###   ########.fr        #
+#    Updated: 2020/01/25 01:05:56 by oearlene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-INC_DIR	= ./includes
-LIB_DIR	= ./libft
+SRC_PATH = ./srcs/
+INC_PATH = ./includes/
+OBJ_PATH = ./obj/
+LFT_PATH = ./libft/
 
-SRC =   main.c \
-        read_and_stock.c \
-        map.c \
-        validation.c \
-        solution.c \
-        solution_1.c \
-        $(LIB_DIR)/*.c
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
 
-OBJ = $(SRC:.c=.o)
+OBJ_NAME = $(SRC_NAME:.c=.o)
 
-HED = $(INC_DIR)/fillit.h
+INC_NAME = fillit.h
 
-LIBHDR = $(LIB_DIR)/libft.h
+SRC_NAME =  main.c \
+            map.c \
+            validation.c \
+            read_and_stock.c \
+            solution.c \
+            solution_1.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -35,16 +38,20 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o: %.c
-	gcc $(FLAGS) -c $< -o $@
-
 $(NAME): $(OBJ)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) -I $(HDR) -I $(LIBHDR)
+	make -C $(LFT_PATH)
+	gcc -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	gcc $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
-	/bin/rm -f $(OBJ)
+	make -C $(LFT_PATH) clean
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	make -C $(LFT_PATH) fclean
+	rm -f $(NAME)
 
 re: fclean all

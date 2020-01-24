@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 include_directories(libft)
+include_directories(srcs)
+include_directories(includes)
 
 add_executable(fillit
         libft/ft_atoi.c
@@ -66,12 +68,10 @@ add_executable(fillit
         libft/ft_tolower.c
         libft/ft_toupper.c
         libft/libft.h
-        get_next_line.c
-        get_next_line.h
-        fillit.h
-        validation.c
-        main.c
-        read_and_stock.c
-        solution.c
-        map.c
-        solution_1.c)
+        includes/fillit.h
+        srcs/validation.c
+        srcs/main.c
+        srcs/read_and_stock.c
+        srcs/solution.c
+        srcs/map.c
+        srcs/solution_1.c)
