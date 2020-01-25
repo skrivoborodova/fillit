@@ -1,35 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dislocation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 13:57:04 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/26 00:11:47 by oearlene         ###   ########.fr       */
+/*   Created: 2020/01/25 22:51:02 by oearlene          #+#    #+#             */
+/*   Updated: 2020/01/25 23:35:56 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+void		dislocate_x(t_piece *piece, int n)
 {
-	t_piece	*piece;
-	t_map	*map;
+	int		i;
 
-	if (argc != 2)
+	i = 0;
+	while (i <= 3)
 	{
-		ft_putstr(USAGE);
-		return (1);
+		piece->x[i] += n;
+		i++;
 	}
-	if ((piece = read_and_stock(argv[1])) == NULL)
+}
+
+void		dislocate_y(t_piece *piece, int n)
+{
+	int		i;
+
+	i = 0;
+	while (i <= 3)
 	{
-		ft_putstr(ERR);
-		return (1);
+		piece->y[i] += n;
+		i++;
 	}
-	map = solve(piece);
-	print_map(map);
-	free_map(map);
-	free_list(piece);
-	return (0);
+}
+
+t_piece		*in_order(t_piece *piece)
+{
+	int		i;
+
+	i = 0;
+	while (i <= 3)
+	{
+		if (piece->x[0] != 0)
+			dislocate_x(piece, -1);
+		if (piece->y[0] != 0)
+			dislocate_y(piece, -1);
+		i++;
+	}
+	return (piece);
 }

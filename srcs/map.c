@@ -84,5 +84,6 @@ int		outside_map(t_map *map, t_piece *piece, int x, int y)
 	}
 	if (i != 4)
 		return (1);
+	put_piece(piece, map, x, y);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 23:49:12 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 02:07:04 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/26 00:50:57 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	del_piece(t_piece *piece, t_map *map, int x, int y)
 	{
 		x1 = piece->x[i] + x;
 		y1 = piece->y[i] + y;
-		map->array[y1][x1] = letter;
+		if (map->array[y1][x1] == piece->letter)
+			map->array[y1][x1] = letter;
 		i++;
 	}
 }
@@ -75,7 +76,8 @@ void	put_piece(t_piece *piece, t_map *map, int x, int y)
 	{
 		x1 = piece->x[i] + x;
 		y1 = piece->y[i] + y;
-		map->array[y1][x1] = letter;
+		if (map->array[y1][x1] == '.')
+			map->array[y1][x1] = letter;
 		i++;
 	}
 }

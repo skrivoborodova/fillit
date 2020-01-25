@@ -6,24 +6,11 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 20:27:34 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 02:53:09 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 22:51:57 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-size_t			count_pieces(t_piece *list)
-{
-	size_t		count;
-
-	count = 0;
-	while (list)
-	{
-		list = list->next;
-		count++;
-	}
-	return (count);
-}
 
 /*
 ** Malloc a new piece struct
@@ -55,7 +42,7 @@ t_piece			*stock_piece(char *buf, char piece_letter)
 		i++;
 	}
 	ptr->letter = piece_letter;
-	return (ptr);
+	return (in_order(ptr));
 }
 
 /*

@@ -74,4 +74,4 @@ add_executable(fillit
         srcs/read_and_stock.c
         srcs/solution.c
         srcs/map.c
-        srcs/solution_1.c)
+        srcs/solution_1.c srcs/dislocation.c)

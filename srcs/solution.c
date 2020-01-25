@@ -6,15 +6,28 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:05:13 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 01:42:15 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/26 00:54:14 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		high_sqrt(int nbr)
+size_t			count_pieces(t_piece *list)
 {
-	int size;
+	size_t		count;
+
+	count = 0;
+	while (list)
+	{
+		list = list->next;
+		count++;
+	}
+	return (count);
+}
+
+int				high_sqrt(int nbr)
+{
+	int			size;
 
 	size = 2;
 	while (size * size < nbr)
@@ -22,7 +35,7 @@ int		high_sqrt(int nbr)
 	return (size);
 }
 
-int		backtracking(t_map *map, t_piece *piece)
+int				backtracking(t_map *map, t_piece *piece)
 {
 	int			x;
 	int			y;
@@ -39,7 +52,6 @@ int		backtracking(t_map *map, t_piece *piece)
 		{
 			if (!outside_map(map, ptr, x, y))
 			{
-				put_piece(ptr, map, x, y);
 				if (backtracking(map, piece->next))
 					return (1);
 				else
@@ -56,10 +68,10 @@ int		backtracking(t_map *map, t_piece *piece)
 ** Start with the smallest map
 */
 
-t_map	*solve(t_piece *list)
+t_map			*solve(t_piece *list)
 {
-	t_map	*map;
-	int		map_size;
+	t_map		*map;
+	int			map_size;
 
 	map_size = high_sqrt(count_pieces(list) * 4);
 	map = new_map(map_size);

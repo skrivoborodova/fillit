@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:31:19 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 01:18:14 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/25 23:00:11 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_map
 t_piece				*read_and_stock(char *file);
 t_piece				*stock_piece(char *buf, char piece_letter);
 t_piece				*new_list(char *buf, int size);
+t_piece				*in_order(t_piece *piece);
 
 int					valid(char *buf, int size);
 int					char_counter(char *buf);
@@ -74,5 +75,7 @@ void				print_map(t_map *map);
 void				free_list(t_piece *list);
 void				put_piece(t_piece *piece, t_map *map, int x, int y);
 void				del_piece(t_piece *piece, t_map *map, int x, int y);
+void				dislocate_y(t_piece *piece, int n);
+void				dislocate_x(t_piece *piece, int n);
 
 #endif
