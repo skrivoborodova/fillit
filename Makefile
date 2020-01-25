@@ -6,7 +6,7 @@
 #    By: oearlene <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/08 13:16:50 by oearlene          #+#    #+#              #
-#    Updated: 2020/01/25 01:05:56 by oearlene         ###   ########.fr        #
+#    Updated: 2020/01/26 01:03:23 by oearlene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC_NAME =  main.c \
             validation.c \
             read_and_stock.c \
             solution.c \
-            solution_1.c
+            solution_1.c \
+            dislocation.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -39,19 +40,19 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LFT_PATH)
-	gcc -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft
+	@make -C $(LFT_PATH)
+	@gcc -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	mkdir -p $(OBJ_PATH)
-	gcc $(FLAGS) $(INC) -o $@ -c $<
+	@mkdir -p $(OBJ_PATH)
+	@gcc $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
-	make -C $(LFT_PATH) clean
-	rm -rf $(OBJ_PATH)
+	@make -C $(LFT_PATH) clean
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	make -C $(LFT_PATH) fclean
-	rm -f $(NAME)
+	@make -C $(LFT_PATH) fclean
+	@rm -f $(NAME)
 
 re: fclean all
