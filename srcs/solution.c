@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:05:13 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/26 00:54:14 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/28 01:23:18 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				backtracking(t_map *map, t_piece *piece)
 		x = 0;
 		while (!check_bound_x(ptr, map, x))
 		{
-			if (!outside_map(map, ptr, x, y))
+			if (!check_piece(map, ptr, x, y))
 			{
 				if (backtracking(map, piece->next))
 					return (1);

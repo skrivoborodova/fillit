@@ -59,7 +59,7 @@ int					char_counter(char *buf);
 int					contacts_counter(char *buf);
 int					high_sqrt(int nbr);
 int					backtracking(t_map *map, t_piece *piece);
-int					outside_map(t_map *map, t_piece *piece, int x, int y);
+int					check_piece(t_map *map, t_piece *piece, int x, int y);
 int					check_bound_x(t_piece *piece, t_map *map, int x);
 int					check_bound_y(t_piece *piece, t_map *map, int y);
 

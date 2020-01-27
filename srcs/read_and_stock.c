@@ -18,7 +18,7 @@
 **
 **	####\n....\n....\n....\n\n
 **	x = i % 5
-**	y = 1 / 5
+**	y = i / 5
 */
 
 t_piece			*stock_piece(char *buf, char piece_letter)

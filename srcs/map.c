@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:15:43 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/25 02:04:01 by oearlene         ###   ########.fr       */
+/*   Updated: 2020/01/28 00:40:49 by oearlene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,4 @@ void	print_map(t_map *map)
 		ft_putchar('\n');
 		i++;
 	}
-}
-
-int		outside_map(t_map *map, t_piece *piece, int x, int y)
-{
-	int i;
-	int x1;
-	int y1;
-
-	i = 0;
-	x1 = 0;
-	y1 = 0;
-	while (i <= 3 && map->array[y1][x1] == '.')
-	{
-		x1 = piece->x[i] + x;
-		y1 = piece->y[i] + y;
-		++i;
-	}
-	if (i != 4)
-		return (1);
-	put_piece(piece, map, x, y);
-	return (0);
 }
