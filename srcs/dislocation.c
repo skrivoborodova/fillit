@@ -6,7 +6,7 @@
 /*   By: oearlene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 22:51:02 by oearlene          #+#    #+#             */
-/*   Updated: 2020/01/27 21:36:48 by vrhaena          ###   ########.fr       */
+/*   Updated: 2020/01/27 21:53:25 by vrhaena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_piece		*in_order(t_piece *piece)
 {
 	int		i;
 	int		x_min;
-	int 	y_min;
+	int		y_min;
 
 	i = 0;
 	x_min = 3;
